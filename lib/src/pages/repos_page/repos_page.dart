@@ -1,6 +1,7 @@
 import 'package:app_miscelanea/src/pages/repos_page/repos_controller.dart';
 import 'package:app_miscelanea/src/pages/repos_page/repository/github_repository_imp.dart';
 import 'package:app_miscelanea/src/shared/widgets/app_base.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,7 +30,7 @@ class _RepoPageState extends State<RepoPage> {
     super.dispose();
   }
 
-  final controller = ReposController(GithubRepositoryImp());
+  final controller = ReposController(GithubRepositoryImp(Dio()));
   @override
   Widget build(BuildContext context) {
     return Scaffold(

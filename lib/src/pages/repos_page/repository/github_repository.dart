@@ -1,3 +1,5 @@
+import '../model/github_model.dart';
+
 abstract class GithubRepository {
-  Future<dynamic> getRepo();
+  Future<List<GithubModel>> getRepo();
 }

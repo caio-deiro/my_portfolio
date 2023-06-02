@@ -20,7 +20,7 @@ class _SplashPageState extends State<SplashPage>
         AnimationController(vsync: this, duration: Duration(seconds: 2));
 
     Future.delayed(const Duration(seconds: 3)).then(
-      (value) {
+      (_) {
         Navigator.of(context).pushReplacementNamed('/profile');
       },
     );

@@ -23,9 +23,11 @@ class TecnologyCardWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                width: 50,
-                child: imageAsset,
+              Flexible(
+                child: SizedBox(
+                  width: 50,
+                  child: imageAsset,
+                ),
               ),
               Text(tecnologyName)
             ],
