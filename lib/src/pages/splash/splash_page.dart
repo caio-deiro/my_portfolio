@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -19,11 +21,11 @@ class _SplashPageState extends State<SplashPage>
     controller =
         AnimationController(vsync: this, duration: Duration(seconds: 2));
 
-    Future.delayed(const Duration(seconds: 3)).then(
-      (_) {
-        Navigator.of(context).pushReplacementNamed('/profile');
-      },
-    );
+    Timer.periodic(Duration(seconds: 2), (timer) {
+      timer.cancel();
+      Navigator.of(context).pushReplacementNamed('/profile');
+    });
+
     final curve = CurvedAnimation(parent: controller, curve: Curves.bounceIn);
     animationPadding = Tween<double>(begin: 0, end: 250).animate(curve)
       ..addListener(() {

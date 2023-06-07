@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../pages/profile/profile_page_test.dart';
 
 void main() {
-  testWidgets('app pageview ...', (tester) async {
+  testWidgets('should renderize all widget components', (tester) async {
     await tester.pumpWidget(buildWidget(AppPageView()));
     await tester.pumpAndSettle();
 
