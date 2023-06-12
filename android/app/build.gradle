@@ -73,15 +73,6 @@ android {
        }
          }
 
-
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
-        }
-    }
-
     flavorDimensions "default"
 
     productFlavors {
@@ -97,10 +88,10 @@ android {
             applicationIdSuffix ""
         }
     }
+    }
 
+    
 
-
-}
 
 flutter {
     source '../..'
@@ -108,4 +99,20 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.startsWith("bundle") && task.name.endsWith("Release")) {
+        def renameTaskName = "rename${task.name.capitalize()}Aab"
+        def oldDir = task.name.substring("bundle".length()).uncapitalize()
+        def newDir = task.name.substring("bundle".length(), task.name.length() - "Release".length()).toLowerCase();
+        tasks.create(renameTaskName, Copy) {
+            def path = "${buildDir}/outputs/bundle/${oldDir}/"
+            from(path)
+            into "$buildDir/outputs/bundle/release/"
+            rename '(.*)aab', "app.aab"
+        }
+
+        task.finalizedBy(renameTaskName)
+    }
 }
