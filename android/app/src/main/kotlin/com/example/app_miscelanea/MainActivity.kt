@@ -1,4 +1,4 @@
-package com.example.app_miscelanea
+package com.caiodeiro.my_portfolio
 
 import io.flutter.embedding.android.FlutterActivity
 

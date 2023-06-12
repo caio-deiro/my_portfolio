@@ -1,6 +1,7 @@
 import 'package:app_miscelanea/src/pages/repos_page/repos_controller.dart';
 import 'package:app_miscelanea/src/pages/repos_page/repository/github_repository_imp.dart';
 import 'package:app_miscelanea/src/shared/widgets/app_base.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,7 +30,7 @@ class _RepoPageState extends State<RepoPage> {
     super.dispose();
   }
 
-  final controller = ReposController(GithubRepositoryImp());
+  final controller = ReposController(GithubRepositoryImp(Dio()));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,38 +39,34 @@ class _RepoPageState extends State<RepoPage> {
           child: controller.loading == true
               ? Center(child: CircularProgressIndicator())
               : ListView.separated(
-                  separatorBuilder: (context, _) => Divider(),
+                  separatorBuilder: (context, _) => Divider(
+                        height: 25,
+                        thickness: 2,
+                        color: Theme.of(context).highlightColor,
+                      ),
                   itemCount: controller.repoList.length,
                   itemBuilder: (context, index) {
                     var gitRepos = controller.repoList[index];
-                    return Container(
-                      height: 80,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).cardColor,
-                        borderRadius: BorderRadius.circular(5),
+                    return ListTile(
+                      title: Text(
+                        gitRepos.name ?? '',
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
-                      child: ListTile(
-                        title: Text(
-                          gitRepos.name ?? '',
-                          style: Theme.of(context).textTheme.displayMedium,
-                        ),
-                        leading: CircleAvatar(
-                          backgroundImage:
-                              AssetImage('assets/images/profile.jpg'),
-                        ),
-                        trailing: Text(gitRepos.language ?? ''),
-                        subtitle: Text(
-                          gitRepos.description ?? '',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                        onTap: () {
-                          launchUrl(
-                            Uri.parse(gitRepos.html_url ?? ''),
-                            mode: LaunchMode.externalApplication,
-                          );
-                        },
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            AssetImage('assets/images/profile.jpg'),
                       ),
+                      trailing: Text(gitRepos.language ?? ''),
+                      subtitle: Text(
+                        gitRepos.description ?? '',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      onTap: () {
+                        launchUrl(
+                          Uri.parse(gitRepos.html_url ?? ''),
+                          mode: LaunchMode.externalApplication,
+                        );
+                      },
                     );
                   })),
     );
