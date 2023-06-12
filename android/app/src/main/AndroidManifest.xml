@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.app_miscelanea">
+    package="com.caiodeiro.my_portfolio">
    <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>
     <!-- If your app checks for call support -->
@@ -10,7 +10,7 @@
     </queries>
    <application
         android:usesCleartextTraffic="true"
-        android:label="app_miscelanea"
+        android:label="My Portfolio"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

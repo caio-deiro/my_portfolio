@@ -1,5 +1,4 @@
 import 'package:app_miscelanea/src/pages/profile/profile_controller.dart';
-import 'package:app_miscelanea/src/pages/profile/tecnology_model.dart';
 import 'package:app_miscelanea/src/pages/profile/widget/habilities_card_widget.dart';
 import 'package:app_miscelanea/src/pages/profile/widget/tecnology_card_widget.dart';
 import 'package:app_miscelanea/src/pages/profile/widget/user_card_profile_widget.dart';
