@@ -5,7 +5,10 @@ import 'package:nock/nock.dart';
 import '../profile/profile_page_test.dart';
 
 void main() async {
-  Map<String, dynamic> response = {'name': 'teste'};
+  Map<String, dynamic> response = {
+    'name': 'teste',
+    'created_at': '2022-04-08T20:57:20Z'
+  };
 
   setUpAll(() async {
     TestWidgetsFlutterBinding.ensureInitialized();
