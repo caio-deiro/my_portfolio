@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.caiodeiro.my_portfolio">
+    package="com.myportfolio_caiodeiro">
    <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>
     <!-- If your app checks for call support -->
