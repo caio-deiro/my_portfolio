@@ -8,7 +8,7 @@ class GithubModel {
 
   final String? language;
   final String? description;
-  final String? updated_at;
+  final String? created_at;
 
   GithubModel({
     required this.name,
@@ -16,7 +16,7 @@ class GithubModel {
     required this.html_url,
     required this.language,
     required this.description,
-    required this.updated_at,
+    required this.created_at,
   });
 
   factory GithubModel.fromJson(Map<String, dynamic> json) {
@@ -26,7 +26,7 @@ class GithubModel {
       html_url: json['html_url'],
       language: json['language'],
       description: json['description'],
-      updated_at: json[' updated_at'],
+      created_at: json['created_at'],
     );
   }
 
@@ -36,7 +36,7 @@ class GithubModel {
     String? html_url,
     String? language,
     String? description,
-    String? updated_at,
+    String? created_at,
   }) {
     return GithubModel(
       name: name ?? this.name,
@@ -44,7 +44,7 @@ class GithubModel {
       html_url: html_url ?? this.html_url,
       language: language ?? this.language,
       description: description ?? this.description,
-      updated_at: updated_at ?? this.updated_at,
+      created_at: created_at ?? this.created_at,
     );
   }
 
@@ -55,7 +55,7 @@ class GithubModel {
       'html_url': html_url,
       'language': language,
       'description': description,
-      'updated_at': updated_at,
+      'created_at': created_at,
     };
   }
 
@@ -67,8 +67,8 @@ class GithubModel {
       language: map['language'] != null ? map['language'] as String : null,
       description:
           map['description'] != null ? map['description'] as String : null,
-      updated_at:
-          map['updated_at'] != null ? map['updated_at'] as String : null,
+      created_at:
+          map['created_at'] != null ? map['created_at'] as String : null,
     );
   }
 
@@ -76,6 +76,6 @@ class GithubModel {
 
   @override
   String toString() {
-    return 'GithubModel(name: $name, full_name: $full_name, html_url: $html_url, language: $language, description: $description, updated_at: $updated_at)';
+    return 'GithubModel(name: $name, full_name: $full_name, html_url: $html_url, language: $language, description: $description, created_at: $created_at)';
   }
 }

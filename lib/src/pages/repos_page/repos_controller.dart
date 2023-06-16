@@ -18,6 +18,8 @@ class ReposController extends ChangeNotifier {
       var response = await githubRepository.getRepo();
       loading = false;
       notifyListeners();
+      response.map((e) => DateTime.parse(e.created_at ?? '')).toList();
+      response.sort((a, b) => b.created_at?.compareTo(a.created_at ?? '') ?? 0);
       repoList.addAll(response);
       debugPrint(repoList.toString());
     } catch (e) {
