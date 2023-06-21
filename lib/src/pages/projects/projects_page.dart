@@ -26,10 +26,13 @@ class ProjectsPage extends StatelessWidget {
             onPressed: () =>
                 Navigator.pushNamed(context, '/projects/calculator'),
           ),
-          ListtileWidget(
-            title: 'Validação e Geração de CPF válido',
-            onPressed: () =>
-                Navigator.pushNamed(context, '/projects/cpf/generator'),
+          Visibility(
+            visible: false,
+            child: ListtileWidget(
+              title: 'Validação e Geração de CPF válido',
+              onPressed: () =>
+                  Navigator.pushNamed(context, '/projects/cpf/generator'),
+            ),
           ),
         ],
       ),
