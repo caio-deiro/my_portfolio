@@ -1,4 +1,4 @@
-package com.caiodeiro.my_portfolio
+package com.myportfolio_caiodeiro
 
 import io.flutter.embedding.android.FlutterActivity
 
